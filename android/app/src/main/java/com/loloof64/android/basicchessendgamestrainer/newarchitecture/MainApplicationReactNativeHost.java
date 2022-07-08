@@ -1,4 +1,4 @@
-package com.basicchessendgames.newarchitecture;
+package com.loloof64.android.basicchessendgamestrainer.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.basicchessendgames.BuildConfig;
-import com.basicchessendgames.newarchitecture.components.MainComponentsRegistry;
-import com.basicchessendgames.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.loloof64.android.basicchessendgamestrainer.BuildConfig;
+import com.loloof64.android.basicchessendgamestrainer.newarchitecture.components.MainComponentsRegistry;
+import com.loloof64.android.basicchessendgamestrainer.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

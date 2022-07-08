@@ -1,4 +1,4 @@
-package com.basicchessendgames.newarchitecture.components;
+package com.loloof64.android.basicchessendgamestrainer.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

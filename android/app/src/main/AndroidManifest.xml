@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.basicchessendgames">
+  package="com.loloof64.android.basicchessendgamestrainer">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
