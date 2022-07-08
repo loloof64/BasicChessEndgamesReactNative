@@ -7,11 +7,13 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "android-shake": "adb shell input keyevent 82"
   },
   "dependencies": {
     "react": "18.0.0",
-    "react-native": "0.69.1"
+    "react-native": "0.69.1",
+    "react-native-splash-screen": "^3.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
