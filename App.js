@@ -7,8 +7,8 @@ import { useTranslation } from 'react-i18next';
 
 import './locales';
 
-import HomeScreen from './screens/HomeScreen';
-import GameScreen from './screens/GameScreen';
+import HomeScreen from './pages/HomeScreen';
+import GameScreen from './pages/GameScreen';
 
 const Stack = createNativeStackNavigator();
 
