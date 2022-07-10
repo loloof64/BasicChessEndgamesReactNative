@@ -22,7 +22,12 @@ export default function CellsZone({ singleCellSizePx, whiteCellColor, blackCellC
     const lineIndex = parseInt(index / 8, 10);
     const colIndex = index % 8;
     const whiteCell = (lineIndex + colIndex) % 2 === 0;
-    return <View style={{ ...cellStyle, ...(whiteCell ? whiteCellStyle : blackCellStyle) }} />;
+    return (
+      <View
+        style={{ ...cellStyle, ...(whiteCell ? whiteCellStyle : blackCellStyle) }}
+        key={index}
+      />
+    );
   });
 }
 
