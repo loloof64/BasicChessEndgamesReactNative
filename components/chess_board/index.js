@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import Background from './Background';
 import CellsZone from './CellsZone';
+import PlayerTurn from './PlayerTurn';
 
 const styles = StyleSheet.create({
   root: {
@@ -49,6 +50,10 @@ function ChessBoard({
           singleCellSizePx={cellSizePx}
           whiteCellColor={whiteCellColor}
           blackCellColor={blackCellColor}
+        />
+        <PlayerTurn
+          boardSizePx={sizePx}
+          whiteTurn={false}
         />
       </View>
     </View>
