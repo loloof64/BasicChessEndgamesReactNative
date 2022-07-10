@@ -14,8 +14,6 @@ export default function GameScreen({ navigation }) {
           sizePx={300}
           relativeLeftPx={30}
           relativeTopPx={80}
-          whiteCellColor="yellow"
-          blackCellColor="brown"
         />
       </Suspense>
     </SafeAreaView>

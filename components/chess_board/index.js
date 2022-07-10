@@ -2,6 +2,8 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
+import CellsZone from './CellsZone';
+
 const styles = StyleSheet.create({
   root: {
     position: 'relative',
@@ -28,33 +30,13 @@ function ChessBoard({
 
   const cellSizePx = sizePx * 0.111;
 
-  const cellStyle = {
-    width: cellSizePx,
-    height: cellSizePx,
-  };
-
-  const whiteCellStyle = {
-    backgroundColor: whiteCellColor,
-  };
-
-  const blackCellStyle = {
-    backgroundColor: blackCellColor,
-  };
-
-  const CellsZone = () => {
-    const indexes = [];
-    for (let i = 0; i < 64; i += 1) indexes[i] = i;
-    return indexes.map((index) => {
-      const lineIndex = parseInt(index / 8, 10);
-      const colIndex = index % 8;
-      const whiteCell = (lineIndex + colIndex) % 2 === 0;
-      return <View style={{ ...cellStyle, ...(whiteCell ? whiteCellStyle : blackCellStyle) }} />;
-    });
-  };
-
   return (
     <View style={{ ...styles.root, ...overrideRootStyle }}>
-      <CellsZone />
+      <CellsZone
+        singleCellSizePx={cellSizePx}
+        whiteCellColor={whiteCellColor}
+        blackCellColor={blackCellColor}
+      />
     </View>
   );
 }
