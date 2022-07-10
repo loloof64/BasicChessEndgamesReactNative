@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
+import Background from './Background';
 import CellsZone from './CellsZone';
 
 const styles = StyleSheet.create({
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
 
 function ChessBoard({
   sizePx, relativeLeftPx, relativeTopPx, backgroundColor,
-  whiteCellColor, blackCellColor,
+  whiteCellColor, blackCellColor, coordinatesColor,
 }) {
   const cellsPaddingPx = sizePx * 0.055;
 
@@ -43,6 +44,7 @@ function ChessBoard({
   return (
     <View style={{ ...styles.root, ...overrideRootStyle }}>
       <View style={{ ...styles.cellsZoneContainerStyle, ...overrideCellsZoneContainerStyle }}>
+        <Background sizePx={sizePx} coordinatesColor={coordinatesColor} />
         <CellsZone
           singleCellSizePx={cellSizePx}
           whiteCellColor={whiteCellColor}
@@ -60,6 +62,7 @@ ChessBoard.defaultProps = {
   backgroundColor: '#124589',
   whiteCellColor: 'navajowhite',
   blackCellColor: 'peru',
+  coordinatesColor: 'yellow',
 };
 
 ChessBoard.propTypes = {
@@ -69,6 +72,7 @@ ChessBoard.propTypes = {
   backgroundColor: PropTypes.string,
   whiteCellColor: PropTypes.string,
   blackCellColor: PropTypes.string,
+  coordinatesColor: PropTypes.string,
 };
 
 export default ChessBoard;
