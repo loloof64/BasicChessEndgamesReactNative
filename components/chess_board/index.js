@@ -7,6 +7,9 @@ import CellsZone from './CellsZone';
 const styles = StyleSheet.create({
   root: {
     position: 'relative',
+  },
+  cellsZoneContainerStyle: {
+    position: 'absolute',
     display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'row',
@@ -20,7 +23,6 @@ function ChessBoard({
   const cellsPaddingPx = sizePx * 0.055;
 
   const overrideRootStyle = {
-    padding: cellsPaddingPx,
     width: sizePx,
     height: sizePx,
     left: relativeLeftPx,
@@ -28,15 +30,26 @@ function ChessBoard({
     backgroundColor,
   };
 
+  const overrideCellsZoneContainerStyle = {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    width: sizePx,
+    height: sizePx,
+    padding: cellsPaddingPx,
+  };
+
   const cellSizePx = sizePx * 0.111;
 
   return (
     <View style={{ ...styles.root, ...overrideRootStyle }}>
-      <CellsZone
-        singleCellSizePx={cellSizePx}
-        whiteCellColor={whiteCellColor}
-        blackCellColor={blackCellColor}
-      />
+      <View style={{ ...styles.cellsZoneContainerStyle, ...overrideCellsZoneContainerStyle }}>
+        <CellsZone
+          singleCellSizePx={cellSizePx}
+          whiteCellColor={whiteCellColor}
+          blackCellColor={blackCellColor}
+        />
+      </View>
     </View>
   );
 }
