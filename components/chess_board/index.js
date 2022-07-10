@@ -10,6 +10,8 @@ const styles = StyleSheet.create({
   },
   cellsZoneContainerStyle: {
     position: 'absolute',
+    left: 0,
+    top: 0,
     display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'row',
@@ -31,9 +33,6 @@ function ChessBoard({
   };
 
   const overrideCellsZoneContainerStyle = {
-    position: 'absolute',
-    left: 0,
-    top: 0,
     width: sizePx,
     height: sizePx,
     padding: cellsPaddingPx,
