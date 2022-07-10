@@ -10,7 +10,13 @@ export default function GameScreen({ navigation }) {
     <SafeAreaView>
       <Suspense fallback={<ActivityIndicator />}>
         <Button title="Go back to home page" onPress={() => navigation.goBack()} />
-        <ChessBoard sizePx={300} relativeLeftPx={30} relativeTopPx={80} backgroundColor="pink" />
+        <ChessBoard
+          sizePx={300}
+          relativeLeftPx={30}
+          relativeTopPx={80}
+          whiteCellColor="yellow"
+          blackCellColor="brown"
+        />
       </Suspense>
     </SafeAreaView>
   );
