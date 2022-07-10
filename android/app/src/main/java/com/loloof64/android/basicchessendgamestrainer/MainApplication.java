@@ -39,6 +39,7 @@ public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mNewArchitectureNativeHost =
       new MainApplicationReactNativeHost(this);
+      
 
   @Override
   public ReactNativeHost getReactNativeHost() {
