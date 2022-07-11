@@ -30,16 +30,19 @@ export default function Background({ sizePx, coordinatesColor, reversed }) {
         reversed={reversed}
       />
       {
-        indexes.map((index) => (
-          <RanksCoordinates
-            widthPx={sizePx}
-            heightPx={sizePx / 9}
-            lineIndex={7 - index}
-            color={coordinatesColor}
-            key={index}
-            reversed={reversed}
-          />
-        ))
+        indexes.map((index) => {
+          const key = reversed ? '8'.charCodeAt(0) - index : '1'.charCodeAt(0) + index;
+          return (
+            <RanksCoordinates
+              widthPx={sizePx}
+              heightPx={sizePx / 9}
+              lineIndex={7 - index}
+              color={coordinatesColor}
+              key={key}
+              reversed={reversed}
+            />
+          );
+        })
       }
       <FilesCoordinates
         widthPx={sizePx}

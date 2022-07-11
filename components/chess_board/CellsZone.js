@@ -112,6 +112,10 @@ export default function CellsZone({
     const pieceValue = piecesArray[index];
     const piece = parsePieceValueToPiece(pieceValue, singleCellSizePx);
 
+    const fileText = String.fromCharCode(reversed ? ('H'.charCodeAt(0) - lineIndex) : ('A'.charCodeAt(0) + lineIndex));
+    const rankText = String.fromCharCode(reversed ? ('1'.charCodeAt(0) + colIndex) : ('8'.charCodeAt(0) - colIndex));
+    const key = fileText + rankText;
+
     return (
       <View
         style={{
@@ -119,7 +123,7 @@ export default function CellsZone({
           ...cellStyle,
           ...(whiteCell ? whiteCellStyle : blackCellStyle),
         }}
-        key={index}
+        key={key}
       >
         {piece}
       </View>

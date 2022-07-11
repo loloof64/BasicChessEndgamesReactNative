@@ -37,7 +37,7 @@ export default function FilesCoordinates({
     <View style={{ ...styles.root, ...overrideRootStyle }}>
       {indexes.map((index) => {
         const text = String.fromCharCode('A'.charCodeAt(0) + index);
-        return <Text style={textStyle} key={index}>{text}</Text>;
+        return <Text style={textStyle} key={text}>{text}</Text>;
       })}
     </View>
   );
