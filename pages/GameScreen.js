@@ -8,7 +8,8 @@ import ChessBoard from '../components/chess_board';
 function computeBoardSize() {
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
-  return windowWidth < windowHeight ? windowWidth : parseInt(windowHeight * 0.7, 10);
+  const ratio = (windowHeight * 1.0) / windowWidth;
+  return windowWidth < windowHeight ? windowWidth : parseInt(windowHeight * ratio, 10);
 }
 
 export default function GameScreen({ navigation }) {
