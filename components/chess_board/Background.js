@@ -31,7 +31,7 @@ export default function Background({ sizePx, coordinatesColor, reversed }) {
       />
       {
         indexes.map((index) => {
-          const key = reversed ? '8'.charCodeAt(0) - index : '1'.charCodeAt(0) + index;
+          const key = String.fromCharCode(reversed ? '8'.charCodeAt(0) - index : '1'.charCodeAt(0) + index);
           return (
             <RanksCoordinates
               widthPx={sizePx}
