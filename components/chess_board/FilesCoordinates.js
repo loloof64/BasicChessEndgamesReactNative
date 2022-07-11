@@ -11,7 +11,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function FilesCoordinates({ widthPx, heightPx, color }) {
+export default function FilesCoordinates({
+  widthPx, heightPx, color, reversed,
+}) {
   const overrideRootStyle = {
     width: widthPx,
     height: heightPx,
@@ -29,7 +31,7 @@ export default function FilesCoordinates({ widthPx, heightPx, color }) {
     textAlign: 'center',
   };
 
-  const indexes = [0, 1, 2, 3, 4, 5, 6, 7];
+  const indexes = reversed ? [7, 6, 5, 4, 3, 2, 1, 0] : [0, 1, 2, 3, 4, 5, 6, 7];
 
   return (
     <View style={{ ...styles.root, ...overrideRootStyle }}>
@@ -45,10 +47,12 @@ FilesCoordinates.defaultProps = {
   widthPx: 100,
   heightPx: 11.11,
   color: 'yellow',
+  reversed: false,
 };
 
 FilesCoordinates.propTypes = {
   widthPx: PropTypes.number,
   heightPx: PropTypes.number,
   color: PropTypes.string,
+  reversed: PropTypes.bool,
 };

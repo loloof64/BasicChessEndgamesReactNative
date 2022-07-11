@@ -70,10 +70,12 @@ const styles = StyleSheet.create({
 
 export default function CellsZone({
   singleCellSizePx, whiteCellColor, blackCellColor,
-  positionFen = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1',
+  positionFen,
+  reversed,
 }) {
   const piecesLines = positionFen.split(' ')[0].split('/');
-  const piecesArray = piecesLines.reduce((acc, line) => {
+  const orderedPiecesLines = reversed ? piecesLines.reverse().map((line) => line.split('').reverse().join('')) : piecesLines;
+  const piecesArray = orderedPiecesLines.reduce((acc, line) => {
     line.split('').forEach((elem) => {
       const elemAsInt = parseInt(elem, 10);
       if (Number.isNaN(elemAsInt)) {
@@ -129,11 +131,13 @@ CellsZone.defaultProps = {
   singleCellSizePx: 30,
   whiteCellColor: 'navajowhite',
   blackCellColor: 'peru',
+  reversed: false,
 };
 
 CellsZone.propTypes = {
   singleCellSizePx: PropTypes.number,
   whiteCellColor: PropTypes.string,
   blackCellColor: PropTypes.string,
-  positionFen: PropTypes.string,
+  positionFen: PropTypes.string.isRequired,
+  reversed: PropTypes.bool,
 };

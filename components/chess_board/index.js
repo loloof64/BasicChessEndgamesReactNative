@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
 function ChessBoard({
   sizePx, relativeLeftPx, relativeTopPx, backgroundColor,
   whiteCellColor, blackCellColor, coordinatesColor,
+  reversed,
 }) {
   const [position] = useState(Chess());
 
@@ -49,12 +50,13 @@ function ChessBoard({
   return (
     <View style={{ ...styles.root, ...overrideRootStyle }}>
       <View style={{ ...styles.cellsZoneContainerStyle, ...overrideCellsZoneContainerStyle }}>
-        <Background sizePx={sizePx} coordinatesColor={coordinatesColor} />
+        <Background sizePx={sizePx} coordinatesColor={coordinatesColor} reversed={reversed} />
         <CellsZone
           singleCellSizePx={cellSizePx}
           whiteCellColor={whiteCellColor}
           blackCellColor={blackCellColor}
           positionFen={position.fen()}
+          reversed={reversed}
         />
         <PlayerTurn
           boardSizePx={sizePx}
@@ -73,6 +75,7 @@ ChessBoard.defaultProps = {
   whiteCellColor: 'navajowhite',
   blackCellColor: 'peru',
   coordinatesColor: 'yellow',
+  reversed: false,
 };
 
 ChessBoard.propTypes = {
@@ -83,6 +86,7 @@ ChessBoard.propTypes = {
   whiteCellColor: PropTypes.string,
   blackCellColor: PropTypes.string,
   coordinatesColor: PropTypes.string,
+  reversed: PropTypes.bool,
 };
 
 export default ChessBoard;

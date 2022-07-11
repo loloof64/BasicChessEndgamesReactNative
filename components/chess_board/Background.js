@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Background({ sizePx, coordinatesColor }) {
+export default function Background({ sizePx, coordinatesColor, reversed }) {
   const overrideRootStyle = {
     width: sizePx,
     height: sizePx,
@@ -23,7 +23,12 @@ export default function Background({ sizePx, coordinatesColor }) {
 
   return (
     <View style={{ ...styles.root, overrideRootStyle }}>
-      <FilesCoordinates widthPx={sizePx} heightPx={sizePx / 18} color={coordinatesColor} />
+      <FilesCoordinates
+        widthPx={sizePx}
+        heightPx={sizePx / 18}
+        color={coordinatesColor}
+        reversed={reversed}
+      />
       {
         indexes.map((index) => (
           <RanksCoordinates
@@ -32,10 +37,16 @@ export default function Background({ sizePx, coordinatesColor }) {
             lineIndex={7 - index}
             color={coordinatesColor}
             key={index}
+            reversed={reversed}
           />
         ))
       }
-      <FilesCoordinates widthPx={sizePx} heightPx={sizePx / 18} color={coordinatesColor} />
+      <FilesCoordinates
+        widthPx={sizePx}
+        heightPx={sizePx / 18}
+        color={coordinatesColor}
+        reversed={reversed}
+      />
     </View>
   );
 }
@@ -43,9 +54,11 @@ export default function Background({ sizePx, coordinatesColor }) {
 Background.defaultProps = {
   sizePx: 100,
   coordinatesColor: 'yellow',
+  reversed: false,
 };
 
 Background.propTypes = {
   sizePx: PropTypes.number,
   coordinatesColor: PropTypes.string,
+  reversed: PropTypes.bool,
 };
