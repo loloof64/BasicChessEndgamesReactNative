@@ -1,8 +1,92 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
-export default function CellsZone({ singleCellSizePx, whiteCellColor, blackCellColor }) {
+import Pl from './pieces/pl';
+import Nl from './pieces/nl';
+import Bl from './pieces/bl';
+import Rl from './pieces/rl';
+import Ql from './pieces/ql';
+import Kl from './pieces/kl';
+import Pd from './pieces/pd';
+import Nd from './pieces/nd';
+import Bd from './pieces/bd';
+import Rd from './pieces/rd';
+import Qd from './pieces/qd';
+import Kd from './pieces/kd';
+
+function parsePieceValueToPiece(pieceValue, singleCellSizePx) {
+  let imageSource;
+  switch (pieceValue) {
+    case 'P':
+      imageSource = <Pl widthPx={singleCellSizePx} heightPx={singleCellSizePx} />;
+      break;
+    case 'N':
+      imageSource = <Nl widthPx={singleCellSizePx} heightPx={singleCellSizePx} />;
+      break;
+    case 'B':
+      imageSource = <Bl widthPx={singleCellSizePx} heightPx={singleCellSizePx} />;
+      break;
+    case 'R':
+      imageSource = <Rl widthPx={singleCellSizePx} heightPx={singleCellSizePx} />;
+      break;
+    case 'Q':
+      imageSource = <Ql widthPx={singleCellSizePx} heightPx={singleCellSizePx} />;
+      break;
+    case 'K':
+      imageSource = <Kl widthPx={singleCellSizePx} heightPx={singleCellSizePx} />;
+      break;
+    case 'p':
+      imageSource = <Pd widthPx={singleCellSizePx} heightPx={singleCellSizePx} />;
+      break;
+    case 'n':
+      imageSource = <Nd widthPx={singleCellSizePx} heightPx={singleCellSizePx} />;
+      break;
+    case 'b':
+      imageSource = <Bd widthPx={singleCellSizePx} heightPx={singleCellSizePx} />;
+      break;
+    case 'r':
+      imageSource = <Rd widthPx={singleCellSizePx} heightPx={singleCellSizePx} />;
+      break;
+    case 'q':
+      imageSource = <Qd widthPx={singleCellSizePx} heightPx={singleCellSizePx} />;
+      break;
+    case 'k':
+      imageSource = <Kd widthPx={singleCellSizePx} heightPx={singleCellSizePx} />;
+      break;
+    default:
+  }
+
+  return imageSource;
+}
+
+const styles = StyleSheet.create({
+  cellContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
+
+export default function CellsZone({
+  singleCellSizePx, whiteCellColor, blackCellColor,
+  positionFen = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1',
+}) {
+  const piecesLines = positionFen.split(' ')[0].split('/');
+  const piecesArray = piecesLines.reduce((acc, line) => {
+    line.split('').forEach((elem) => {
+      const elemAsInt = parseInt(elem, 10);
+      if (Number.isNaN(elemAsInt)) {
+        acc.push(elem);
+      } else {
+        for (let i = 0; i < elemAsInt; i += 1) {
+          acc.push(' ');
+        }
+      }
+    });
+    return acc;
+  }, []);
+
   const cellStyle = {
     width: singleCellSizePx,
     height: singleCellSizePx,
@@ -22,11 +106,21 @@ export default function CellsZone({ singleCellSizePx, whiteCellColor, blackCellC
     const lineIndex = parseInt(index / 8, 10);
     const colIndex = index % 8;
     const whiteCell = (lineIndex + colIndex) % 2 === 0;
+
+    const pieceValue = piecesArray[index];
+    const piece = parsePieceValueToPiece(pieceValue, singleCellSizePx);
+
     return (
       <View
-        style={{ ...cellStyle, ...(whiteCell ? whiteCellStyle : blackCellStyle) }}
+        style={{
+          ...styles.cellContainer,
+          ...cellStyle,
+          ...(whiteCell ? whiteCellStyle : blackCellStyle),
+        }}
         key={index}
-      />
+      >
+        {piece}
+      </View>
     );
   });
 }
@@ -41,4 +135,5 @@ CellsZone.propTypes = {
   singleCellSizePx: PropTypes.number,
   whiteCellColor: PropTypes.string,
   blackCellColor: PropTypes.string,
+  positionFen: PropTypes.string,
 };

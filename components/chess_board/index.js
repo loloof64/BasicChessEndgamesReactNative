@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
+
+import { Chess } from 'chess.js';
 
 import Background from './Background';
 import CellsZone from './CellsZone';
@@ -24,6 +26,8 @@ function ChessBoard({
   sizePx, relativeLeftPx, relativeTopPx, backgroundColor,
   whiteCellColor, blackCellColor, coordinatesColor,
 }) {
+  const [position] = useState(Chess());
+
   const cellsPaddingPx = sizePx * 0.055;
 
   const overrideRootStyle = {
@@ -50,10 +54,11 @@ function ChessBoard({
           singleCellSizePx={cellSizePx}
           whiteCellColor={whiteCellColor}
           blackCellColor={blackCellColor}
+          positionFen={position.fen()}
         />
         <PlayerTurn
           boardSizePx={sizePx}
-          whiteTurn={false}
+          whiteTurn={position.turn() === 'w'}
         />
       </View>
     </View>
