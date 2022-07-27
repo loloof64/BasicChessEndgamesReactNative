@@ -7,6 +7,7 @@ import { Chess } from 'chess.js';
 import Background from './Background';
 import CellsZone from './CellsZone';
 import PlayerTurn from './PlayerTurn';
+import DragNDropZone from './DragNDropZone';
 
 const styles = StyleSheet.create({
   root: {
@@ -14,8 +15,6 @@ const styles = StyleSheet.create({
   },
   cellsZoneContainerStyle: {
     position: 'absolute',
-    left: 0,
-    top: 0,
     display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'row',
@@ -29,7 +28,8 @@ function ChessBoard({
 }) {
   const [position] = useState(Chess());
 
-  const cellsPaddingPx = sizePx * 0.055;
+  const cellsZoneSizePx = sizePx * 0.8888;
+  const cellsZoneMarginPx = sizePx * 0.05555;
 
   const overrideRootStyle = {
     width: sizePx,
@@ -40,12 +40,12 @@ function ChessBoard({
   };
 
   const overrideCellsZoneContainerStyle = {
-    width: sizePx,
-    height: sizePx,
-    padding: cellsPaddingPx,
+    width: cellsZoneSizePx,
+    height: cellsZoneSizePx,
+    margin: cellsZoneMarginPx,
   };
 
-  const cellSizePx = sizePx * 0.111;
+  const cellSizePx = sizePx * 0.1111;
 
   return (
     <View style={{ ...styles.root, ...overrideRootStyle }}>
@@ -57,6 +57,9 @@ function ChessBoard({
           blackCellColor={blackCellColor}
           positionFen={position.fen()}
           reversed={reversed}
+        />
+        <DragNDropZone
+          sizePx={cellSizePx * 8}
         />
       </View>
       <PlayerTurn
