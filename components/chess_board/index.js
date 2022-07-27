@@ -49,8 +49,8 @@ function ChessBoard({
 
   return (
     <View style={{ ...styles.root, ...overrideRootStyle }}>
+      <Background sizePx={sizePx} coordinatesColor={coordinatesColor} reversed={reversed} />
       <View style={{ ...styles.cellsZoneContainerStyle, ...overrideCellsZoneContainerStyle }}>
-        <Background sizePx={sizePx} coordinatesColor={coordinatesColor} reversed={reversed} />
         <CellsZone
           singleCellSizePx={cellSizePx}
           whiteCellColor={whiteCellColor}
@@ -58,11 +58,11 @@ function ChessBoard({
           positionFen={position.fen()}
           reversed={reversed}
         />
-        <PlayerTurn
-          boardSizePx={sizePx}
-          whiteTurn={position.turn() === 'w'}
-        />
       </View>
+      <PlayerTurn
+        boardSizePx={sizePx}
+        whiteTurn={position.turn() === 'w'}
+      />
     </View>
   );
 }
